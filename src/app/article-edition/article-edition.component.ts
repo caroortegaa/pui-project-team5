@@ -15,5 +15,4 @@ export class ArticleEditionComponent implements OnInit{
   public article: Article;
   @ViewChild('articleform') articleform: any;
 
-
 }

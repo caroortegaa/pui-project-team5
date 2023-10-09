@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from '../user';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -43,14 +43,14 @@ export class LoginService {
     return this.user;
   }
 
-  logout() {
+  /*logout() {
     this.user = null;
-  }
+  }*/
 
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.user = null;
+      //this.user = null;
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

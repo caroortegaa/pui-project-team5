@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Article } from './article';
+import { Article } from '../article';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ export class NewsService {
   //The APIKEY for anonymous user simulation is: ANON05_339
 
   private APIKEY: string;
-  private APIKEY_ANON = 'xxxxxx';
+  private APIKEY_ANON = 'ANON05_339';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -61,11 +61,11 @@ export class NewsService {
     return this.http.get<Article[]>(this.newsUrl, this.httpOptions);
   }
 
-  deleteArticle(article: Article | number): Observable<Article> {
+  /*deleteArticle(article: Article | number): Observable<Article> {
     const id = typeof article === 'number' ? article : article.id;
     const url = `${this.articleUrl}/${id}`;
     return this.http.delete<Article>(url, this.httpOptions);
-  }
+  }*/
 
 
   // Returns an article which contains the following elements:
@@ -88,7 +88,7 @@ export class NewsService {
   }
 
   updateArticle(article: Article): Observable<Article> {
-    console.log('Updating article id=' + article.id);
+    //console.log('Updating article id=' + article.id);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);
   }
 

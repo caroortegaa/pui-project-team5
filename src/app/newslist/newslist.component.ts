@@ -16,7 +16,7 @@ export class NewslistComponent implements OnInit {
 
   ngOnInit(): void {
       this.article = {title: "", subtitle: "", abstract: "", category: "", body: "", image: ""}
-      this.newsList = this.newsservice.getArticles();
+      //this.newsList = this.newsservice.getArticles();
   }
 
 }

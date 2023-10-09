@@ -1,0 +1,109 @@
+<h1>Compose a new article</h1>
+
+<form #articleform="ngForm">
+<label>
+    Title
+    <input  
+    type="text" 
+    class="form-control" 
+    required [(ngModel)]="article.title" 
+    name="articletitle" 
+    #articletitle="ngModel"
+    [ngClass]="articletitle.valid || articletitle.pristine ? '': 'bg-danger'"
+    pattern="[\sA-Za-z0-9._%&+-]{10,50}$">
+</label>
+
+<div class="alert alert-danger" *ngIf="articletitle.touched && !articletitle.valid">
+    <div *ngIf="articletitle.errors && articletitle.errors['required']">Title is required.</div>
+    <div *ngIf="articletitle.errors && articletitle.errors['pattern']">Title does not match the requirements.</div>
+</div>
+
+<br>
+
+<label>
+    Subtitle 
+    <input  
+    type="text" 
+    class="form-control" 
+    required [(ngModel)]="article.subtitle" 
+    name="articlesubtitle" 
+    #articlesubtitle="ngModel"
+    [ngClass]="articlesubtitle.valid || articlesubtitle.pristine ? '': 'bg-danger'"
+    pattern="[\sA-Za-z0-9._%&+-]{10,50}$">
+</label>
+
+<div class="alert alert-danger" *ngIf="articlesubtitle.touched && !articlesubtitle.valid">
+    <div *ngIf="articlesubtitle.errors && articlesubtitle.errors['required']">Subtitle is required.</div>
+    <div *ngIf="articlesubtitle.errors && articlesubtitle.errors['pattern']">Subtitle does not match the required pattern.</div>
+</div>
+
+<br>
+
+<label>
+    Abstract 
+    <input  
+    type="text" 
+    class="form-control" 
+    required [(ngModel)]="article.abstract" 
+    name="articleabstract" 
+    #articleabstract="ngModel"
+    [ngClass]="articleabstract.valid || articleabstract.pristine ? '': 'bg-danger' "
+    pattern="[\sA-Za-z0-9._%&+-]{10,50}$">
+</label>
+
+<div class="alert alert-danger" *ngIf="articleabstract.touched && !articleabstract.valid">
+    <div *ngIf="articleabstract.errors && articleabstract.errors['required']">Abstract is required.</div>
+    <div *ngIf="articleabstract.errors && articleabstract.errors['pattern']">Abstract does not match the required pattern.</div>
+</div>
+
+<br>
+
+<label>
+    Category 
+    <input  
+    type="text" 
+    class="form-control" 
+    required [(ngModel)]="article.category" 
+    name="articlecategory" 
+    #articlecategory="ngModel"
+    [ngClass]="articlecategory.valid || articlecategory.pristine ? '': 'bg-danger' ">
+</label>
+
+<div class="alert alert-danger" *ngIf="articlecategory.touched && !articlecategory.valid">
+    <div *ngIf="articlecategory.errors && articlecategory.errors['required']">Please choose an article category.</div>
+</div>
+
+<br>
+
+<label>
+    Body
+    <br> 
+    <textarea  
+    name="articlebody" 
+    cols="40" 
+    rows="10" 
+    class="form-control" 
+    required [(ngModel)]="article.body"
+    #articlebody="ngModel"
+    [ngClass]="articlebody.valid || articlebody.pristine ? '': 'bg-danger' "
+    >
+    </textarea>
+</label>
+<br>
+
+<button 
+class="btn btn-outline-success"
+type="submit" 
+[disabled]="!articleform.form.valid">
+Save article
+</button>
+
+<button
+style="margin-left:10px" 
+class="btn btn-outline-danger">
+Go back
+</button>
+
+<br>
+
+</form>

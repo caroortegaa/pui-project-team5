@@ -1,6 +1,6 @@
 export interface Article {
     title: string;
-    subttitle: string;
+    subtitle: string;
     abstract: string;
     category: string;
     body: string;

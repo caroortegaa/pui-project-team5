@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewslistComponent } from './newslist/newslist.component';
 import { ArticleEditionComponent } from './article-edition/article-edition.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,9 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
     NewslistComponent,
     ArticleEditionComponent,
     ArticleDetailsComponent,
+    LoginComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

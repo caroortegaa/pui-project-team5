@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewslistComponent } from './newslist/newslist.component';
 import { ArticleEditionComponent } from './article-edition/article-edition.component';
-import { ArticleDetailsComponent } from './article-details/article-details.component';
+import {ArticleDetailsComponent} from './article-details/article-details.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,15 @@ import { LoginComponent } from './login/login.component';
     NewslistComponent,
     ArticleEditionComponent,
     ArticleDetailsComponent,
-    LoginComponent,
+    LoginComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

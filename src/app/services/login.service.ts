@@ -43,9 +43,9 @@ export class LoginService {
     return this.user;
   }
 
-  /*logout() {
-    this.user = null;
-  }*/
+  logout() {
+    this.user = null as any;
+  }
 
 
   private handleError<T>(operation = 'operation', result?: T) {

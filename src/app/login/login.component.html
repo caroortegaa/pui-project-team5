@@ -1,12 +1,38 @@
 <div>
-  <form>
+  <p *ngIf="this.loginservice.isLogged(); else loggedOut" > Hello, {{this.user.username}}!</p>
+  <ng-template #loggedOut>
+  <form #loginform="ngForm">
+
     <label>User</label>
-    <input />
+
+    <input type="text" 
+    class="form-control" 
+    required [(ngModel)]="user.username" 
+    name="username" 
+    >
+
     <label>Password</label>
-    <input />
-    <button class="btn btn-primary">Log in</button>
+
+    <input type="text" 
+    class="form-control" 
+    required [(ngModel)]="user.password" 
+    name="password" 
+    >
+
+    <button 
+    class="btn btn-primary"
+    (click)="logg()"
+    >
+    Log in
+  </button>
   </form>
+</ng-template>
 </div>
 <div>
-  <button class="btn btn-primary">Sign out</button>
+  <button 
+  *ngIf="this.loginservice.isLogged()" 
+  class="btn btn-primary"
+  (click)="this.loginservice.logout()"
+  
+  >Sign out</button>
 </div>

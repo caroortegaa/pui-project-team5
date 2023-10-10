@@ -60,13 +60,19 @@
 
 <label>
     Category 
-    <input  
-    type="text" 
-    class="form-control" 
-    required [(ngModel)]="article.category" 
-    name="articlecategory" 
-    #articlecategory="ngModel"
-    [ngClass]="articlecategory.valid || articlecategory.pristine ? '': 'bg-danger' ">
+    <select 
+            class="form-control"
+            required [(ngModel)]="article.category" 
+            name="articlecategory" 
+            #articlecategory="ngModel"
+            [ngClass]="articlecategory.valid || articlecategory.pristine ? '': 'bg-danger' "> 
+            
+        <option value="National" selected>National</option> 
+        <option value="Economy">Economy</option> 
+        <option value="Sports">Sports</option> 
+        <option value="Technology">Technology</option> 
+    </select>
+
 </label>
 
 <div class="alert alert-danger" *ngIf="articlecategory.touched && !articlecategory.valid">
@@ -94,8 +100,9 @@
 <button 
 class="btn btn-outline-success"
 type="submit" 
+(click) = "create()"
 [disabled]="!articleform.form.valid">
-Save article
+Create new article
 </button>
 
 <button

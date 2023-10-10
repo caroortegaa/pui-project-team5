@@ -9,6 +9,7 @@
     class="form-control" 
     required [(ngModel)]="user.username" 
     name="username" 
+    #username="ngModel"
     >
 
     <label>Password</label>
@@ -17,7 +18,12 @@
     class="form-control" 
     required [(ngModel)]="user.password" 
     name="password" 
+    #password="ngModel"
     >
+
+    <div class="alert alert-danger" *ngIf="showError && password.touched">
+      Invalid username or password! Please try again.
+    </div>
 
     <button 
     class="btn btn-primary"
@@ -25,6 +31,7 @@
     >
     Log in
   </button>
+
   </form>
 </ng-template>
 </div>
@@ -33,6 +40,6 @@
   *ngIf="this.loginservice.isLogged()" 
   class="btn btn-primary"
   (click)="this.loginservice.logout()"
-  
+
   >Sign out</button>
 </div>

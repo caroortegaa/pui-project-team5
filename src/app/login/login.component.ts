@@ -11,6 +11,7 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit{
 
   public user: User;
+  public showError: boolean;
 
   constructor(public loginservice: LoginService) { 
   }
@@ -22,7 +23,10 @@ export class LoginComponent implements OnInit{
   } 
 
   logg() {
-    this.loginservice.login(this.user.username, this.user.password).subscribe({next:(user) => {console.log(this.user.username)}})
+    this.loginservice.login(this.user.username, this.user.password).subscribe({
+      next:(user) => console.log(this.user.username),
+      error: err => this.showError = true,  
+    })
   }
   
   }

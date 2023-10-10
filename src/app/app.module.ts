@@ -10,6 +10,7 @@ import { ArticleEditionComponent } from './article-edition/article-edition.compo
 import {ArticleDetailsComponent} from './article-details/article-details.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     NewslistComponent,
     ArticleEditionComponent,
     ArticleDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

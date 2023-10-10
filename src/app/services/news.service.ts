@@ -58,6 +58,7 @@ export class NewsService {
   //  "thumbnail_media_type":...}
 
   getArticles(): Observable<Article[]> {
+    console.log('Reach getArticles() in service')
     return this.http.get<Article[]>(this.newsUrl, this.httpOptions);
   }
 
@@ -84,7 +85,7 @@ export class NewsService {
     console.log('Requesting article id=' + id);
     const url = `${this.articleUrl}/${id}`;
     return this.http.get<Article>(url, this.httpOptions);
-
+    
   }
 
   updateArticle(article: Article): Observable<Article> {

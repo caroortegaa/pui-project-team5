@@ -11,6 +11,7 @@ import {ArticleDetailsComponent} from './article-details/article-details.compone
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ArticleEditionComponent,
     ArticleDetailsComponent,
     LoginComponent,
-    NavBarComponent
+    NavBarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

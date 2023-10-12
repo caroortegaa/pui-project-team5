@@ -10,52 +10,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./newslist.component.css'],
 })
 export class NewslistComponent implements OnInit {
-  article!: Article;
+  article: Article;
   newsList: Article[] = [];
+  id: number;
 
-  constructor(
-    public newsservice: NewsService,
-    public loginservice: LoginService,
-    private router: Router
-  ) {
-    this.newsList = [
-      {
-        id: 1,
-        title: 'Article 1',
-        subtitle: 'sub article 1',
-        abstract: 'nsxajnx',
-        category: 'Sports',
-        body: 'jxjndcnj',
-        image_data: '',
-        image_media_type: '',
-      },
-      {
-        id: 2,
-        title: 'Article 2',
-        subtitle: 'sub article 2',
-        abstract: 'kxdskmwckx',
-        category: 'News',
-        body: 'jndkcjkswd',
-        image_data: '',
-        image_media_type: '',
-      },
-    ];
+  constructor(public newsservice : NewsService, public loginservice : LoginService, private router: Router){
+ 
   }
 
   ngOnInit(): void {
-    this.article = {
-      id: 0,
-      title: '',
-      subtitle: '',
-      abstract: '',
-      category: '',
-      body: '',
-      image_data: '',
-      image_media_type: '',
-    };
-    this.newsservice.getArticles().subscribe((res) => {
-      this.newsList = res;
-    });
+      this.article = {id: NaN, title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:""}
+      this.newsservice.getArticles().subscribe(res=>{
+        this.newsList = res;
+      }
+        )
+
+  }
+
+  remove(article:Article) {
+    console.log(article)
+    this.newsservice.deleteArticle(article).subscribe({
+      next:(article) => console.log('deleted'),
+      complete: () => delete this.newsList[article.id]
+    })
+    this.newsservice.getArticles()
+    return location.reload();
   }
 
   verNew(eid: number) {
@@ -65,4 +44,5 @@ export class NewslistComponent implements OnInit {
   getImageUrl(imageData: string, mediaType: string): string {
     return `data:${mediaType};base64,${imageData}`;
   }
+
 }

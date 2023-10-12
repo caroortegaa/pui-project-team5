@@ -9,16 +9,10 @@ import { NewsService } from '../services/news.service';
 })
 export class ArticleEditionComponent implements OnInit {
   ngOnInit() {
-    this.article = {
-      id: 0,
-      title: '',
-      subtitle: '',
-      abstract: '',
-      category: '',
-      body: '',
-      image_data: '',
-      image_media_type: '',
-    };
+
+    this.article = {id: NaN, title: "", subtitle:"", abstract: "", category:"", body: "", image_data: '', image_media_type: '',};
+
+
   }
 
   constructor(public newsservice: NewsService) {}

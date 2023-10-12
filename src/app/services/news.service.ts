@@ -62,11 +62,12 @@ export class NewsService {
     return this.http.get<Article[]>(this.newsUrl, this.httpOptions);
   }
 
-  /*deleteArticle(article: Article | number): Observable<Article> {
-    const id = typeof article === 'number' ? article : article.id;
+  deleteArticle(article: Article): Observable<Article> {
+    console.log('deleting')
+    const id = article.id;
     const url = `${this.articleUrl}/${id}`;
     return this.http.delete<Article>(url, this.httpOptions);
-  }*/
+  }
 
 
   // Returns an article which contains the following elements:

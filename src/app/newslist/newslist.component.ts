@@ -14,26 +14,35 @@ export class NewslistComponent implements OnInit {
   newsList: Article[] = [];
   id: number;
 
-  constructor(public newsservice : NewsService, public loginservice : LoginService, private router: Router){
- 
-  }
+  constructor(
+    public newsservice: NewsService,
+    public loginservice: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-      this.article = {id: NaN, title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:""}
-      this.newsservice.getArticles().subscribe(res=>{
-        this.newsList = res;
-      }
-        )
-
+    this.article = {
+      id: NaN,
+      title: '',
+      subtitle: '',
+      abstract: '',
+      category: '',
+      body: '',
+      image_data: '',
+      image_media_type: '',
+    };
+    this.newsservice.getArticles().subscribe((res) => {
+      this.newsList = res;
+    });
   }
 
-  remove(article:Article) {
-    console.log(article)
+  remove(article: Article) {
+    console.log(article);
     this.newsservice.deleteArticle(article).subscribe({
-      next:(article) => console.log('deleted'),
-      complete: () => delete this.newsList[article.id]
-    })
-    this.newsservice.getArticles()
+      next: (article) => console.log('deleted'),
+      complete: () => delete this.newsList[article.id],
+    });
+    this.newsservice.getArticles();
     return location.reload();
   }
 
@@ -45,4 +54,12 @@ export class NewslistComponent implements OnInit {
     return `data:${mediaType};base64,${imageData}`;
   }
 
+  selectedCategory: string = '';
+
+  selectCategory(category: string) {
+    this.selectedCategory = category.toLowerCase();
+    console.log(this.busqueda);
+  }
+
+  busqueda: string = '';
 }

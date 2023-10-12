@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CategoryPipe } from './category.pipe';
+import { BuscarPipe } from './buscar.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     ArticleDetailsComponent,
     LoginComponent,
     NavBarComponent,
-    NavbarComponent
+    NavbarComponent,
+    CategoryPipe,
+    BuscarPipe
   ],
   imports: [
     BrowserModule,

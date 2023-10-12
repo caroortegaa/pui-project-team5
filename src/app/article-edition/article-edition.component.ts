@@ -5,25 +5,33 @@ import { NewsService } from '../services/news.service';
 @Component({
   selector: 'app-article-edition',
   templateUrl: './article-edition.component.html',
-  styleUrls: ['./article-edition.component.css']
+  styleUrls: ['./article-edition.component.css'],
 })
-export class ArticleEditionComponent implements OnInit{
-
+export class ArticleEditionComponent implements OnInit {
   ngOnInit() {
-
-    this.article = {title: "", subtitle:"", abstract: "", category:"", body: "", image:""};
-
+    this.article = {
+      id: 0,
+      title: '',
+      subtitle: '',
+      abstract: '',
+      category: '',
+      body: '',
+      image_data: '',
+      image_media_type: '',
+    };
   }
 
-  constructor(public newsservice: NewsService) { 
-  }
+  constructor(public newsservice: NewsService) {}
 
   public article: Article;
   @ViewChild('articleform') articleform: any;
 
   create() {
-    this.newsservice.setUserApiKey("DEV_TEAM_90785_3")
-    this.newsservice.createArticle(this.article).subscribe({next:(article) => {console.log(this.article.title)}})
+    this.newsservice.setUserApiKey('DEV_TEAM_90785_3');
+    this.newsservice.createArticle(this.article).subscribe({
+      next: (article) => {
+        console.log(this.article.title);
+      },
+    });
   }
-
 }

@@ -1,10 +1,19 @@
-<div class="container">
-  <h1>Titulo</h1>
-  <h2>Subtitulo</h2>
-  <h3>Categoria</h3>
-  <h3>Imagen</h3>
-  <h3>Abstract</h3>
-  <p>Body</p>
-  <p>Modification</p>
-  <button class="btn btn-primary">Back</button>
+<div class="container p-2">
+  <h1 class="display-4">{{ new.title }}</h1>
+  <p class="fs-6 fst-italic">
+    {{ new.subtitle }}
+  </p>
+  <p class="fs-6 text-uppercase text-secondary">{{ new.category }}</p>
+  <div class="mb-4">
+    <img
+      [src]="getImageUrl(new.image_data, new.image_media_type)"
+      alt=""
+      class="img-fluid"
+    />
+  </div>
+  <p class="fs-6" [innerHTML]="new.abstract"></p>
+  <p [innerHTML]="new.body"></p>
+
+  <p class="fst-italic text-danger">Modification</p>
+  <button class="btn btn-primary" (click)="goBack()">Back</button>
 </div>

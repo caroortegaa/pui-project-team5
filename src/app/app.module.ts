@@ -14,25 +14,33 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CategoryPipe } from './category.pipe';
 import { BuscarPipe } from './buscar.pipe';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewslistComponent,
     ArticleEditionComponent,
+    NewslistComponent,
     ArticleDetailsComponent,
     LoginComponent,
-    NavBarComponent,
     NavbarComponent,
     CategoryPipe,
-    BuscarPipe
+    BuscarPipe,
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    NavBarComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,6 +5,6 @@ export interface Article {
     abstract: string;
     category: string;
     body: string;
-    image_data: string;
-    image_media_type: string; //maybe change to image_media_type, image_data
+    image_data: any;
+    image_media_type: any; //maybe change to image_media_type, image_data
 }

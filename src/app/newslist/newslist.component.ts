@@ -3,6 +3,7 @@ import { Article } from '../article';
 import { NewsService } from '../services/news.service';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { ImageServiceService } from '../image-service.service';
 
 @Component({
   selector: 'app-newslist',
@@ -17,7 +18,8 @@ export class NewslistComponent implements OnInit {
   constructor(
     public newsservice: NewsService,
     public loginservice: LoginService,
-    private router: Router
+    private router: Router,
+    private imageservice: ImageServiceService,
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +52,11 @@ export class NewslistComponent implements OnInit {
     this.router.navigate(['/articlesdetail', eid]);
   }
 
-  getImageUrl(imageData: string, mediaType: string): string {
+  /*getImageUrl(imageData: string, mediaType: string): string {
+    return `data:${mediaType};base64,${imageData}`;
+  }*/
+  getImageUrl(): string {
+    const { imageData, mediaType } = this.imageservice.getImageData();
     return `data:${mediaType};base64,${imageData}`;
   }
 

@@ -1,0 +1,11 @@
+.form-control-file{
+  background-color: #e6e6e6;
+  border: 1px solid #f1f0f0;
+  padding: 8px;
+  border-radius: 5px;
+  color: #326abe;
+}
+
+.form-control-file:hover{
+    background-color: #2b89a5;
+}

@@ -14,7 +14,7 @@ export class ArticleEditionComponent implements OnInit {
 
 
   }
-
+  
   constructor(public newsservice: NewsService) {}
 
   public article: Article;
@@ -27,5 +27,6 @@ export class ArticleEditionComponent implements OnInit {
         console.log(this.article.title);
       },
     });
+
   }
 }

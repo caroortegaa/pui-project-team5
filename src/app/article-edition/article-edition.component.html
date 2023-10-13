@@ -1,10 +1,19 @@
 <h1>Compose a new article</h1>
 
 <form #articleform="ngForm">
+
+<!-- example of bootstrap card working: <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Example content lalalakjdsmkxmkasxl</p>
+    <a href="#" class="btn btn-primary">Clicketi kooo</a>
+</div> -->
+
+<div class="card-body col-sm-6" style="width: 18rem;">
 <label>
     Title
     <input  
-    type="text" 
+    type="text"
     class="form-control" 
     required [(ngModel)]="article.title" 
     name="articletitle" 
@@ -30,12 +39,13 @@
     #articlesubtitle="ngModel"
     [ngClass]="articlesubtitle.valid || articlesubtitle.pristine ? '': 'bg-danger'"
     pattern="[\sA-Za-z0-9._%&+-]{10,50}$">
+    
+    <div class="alert alert-danger" *ngIf="articlesubtitle.touched && !articlesubtitle.valid">
+        <div *ngIf="articlesubtitle.errors && articlesubtitle.errors['required']">Subtitle is required.</div>
+        <div *ngIf="articlesubtitle.errors && articlesubtitle.errors['pattern']">Subtitle does not match the required pattern.</div>
+    </div>
 </label>
 
-<div class="alert alert-danger" *ngIf="articlesubtitle.touched && !articlesubtitle.valid">
-    <div *ngIf="articlesubtitle.errors && articlesubtitle.errors['required']">Subtitle is required.</div>
-    <div *ngIf="articlesubtitle.errors && articlesubtitle.errors['pattern']">Subtitle does not match the required pattern.</div>
-</div>
 
 <br>
 
@@ -96,6 +106,9 @@
     </textarea>
 </label>
 <br>
+</div>
+
+<app-upload-image></app-upload-image>
 
 <button 
 class="btn btn-outline-success"

@@ -1,0 +1,7 @@
+<form>
+    <div class="uploadform">
+      <label for="fileUpload">Upload an image here:</label>
+      <input type="file" id="fileUpload" (change)="fileChangeEvent($event)" accept="image/jpeg, image/png" class="form-control-file">
+    </div>
+    <img [src]="cardImageBase64" alt="Preview" *ngIf="isImageSaved" class="preview-image" />
+</form>

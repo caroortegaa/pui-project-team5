@@ -1,4 +1,8 @@
-<h1>Compose a new article</h1>
+<h1 *ngIf="this.editmode; else createmode"> Edit article </h1>
+
+<ng-template #createmode>
+    <h1> Create a new article </h1>
+</ng-template>
 
 <form #articleform="ngForm">
 
@@ -19,7 +23,8 @@
     name="articletitle" 
     #articletitle="ngModel"
     [ngClass]="articletitle.valid || articletitle.pristine ? '': 'bg-danger'"
-    pattern="[\sA-Za-z0-9._%&+-]{10,50}$">
+    pattern="[\sA-Za-z0-9._%&+-]{10,50}$"
+    >
 </label>
 
 <div class="alert alert-danger" *ngIf="articletitle.touched && !articletitle.valid">
@@ -111,14 +116,27 @@
 <app-upload-image></app-upload-image>
 
 <button 
+*ngIf="this.editmode; else createbutton"
+class="btn btn-outline-success"
+type="submit" 
+(click) = "update()"
+[disabled]="!articleform.form.valid">
+Update article
+</button>
+
+
+<ng-template #createbutton>
+<button 
 class="btn btn-outline-success"
 type="submit" 
 (click) = "create()"
 [disabled]="!articleform.form.valid">
 Create new article
 </button>
+</ng-template>
 
 <button
+[routerLink]="['/newslist/']"
 style="margin-left:10px" 
 class="btn btn-outline-danger">
 Go back

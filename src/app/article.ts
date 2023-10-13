@@ -1,5 +1,7 @@
 export interface Article {
     id: number;
+    id_user: number;
+    update_date: Date;
     title: string;
     subtitle: string;
     abstract: string;

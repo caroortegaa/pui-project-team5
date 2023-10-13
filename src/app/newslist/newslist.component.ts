@@ -4,6 +4,8 @@ import { NewsService } from '../services/news.service';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { ImageServiceService } from '../image-service.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-newslist',
@@ -14,28 +16,20 @@ export class NewslistComponent implements OnInit {
   article: Article;
   newsList: Article[] = [];
   id: number;
+  qparam1: string;
 
-  constructor(
-    public newsservice: NewsService,
-    public loginservice: LoginService,
-    private router: Router,
-    private imageservice: ImageServiceService,
-  ) {}
+  constructor(public newsservice : NewsService, public loginservice : LoginService, private router: Router, private route: ActivatedRoute, private imageservice: ImageServiceService){
+ 
+  }
 
   ngOnInit(): void {
-    this.article = {
-      id: NaN,
-      title: '',
-      subtitle: '',
-      abstract: '',
-      category: '',
-      body: '',
-      image_data: '',
-      image_media_type: '',
-    };
-    this.newsservice.getArticles().subscribe((res) => {
-      this.newsList = res;
-    });
+
+      this.article = {id: NaN, id_user: NaN, update_date: new Date(""), title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:""}
+      this.newsservice.getArticles().subscribe(res=>{
+        this.newsList = res;
+      }
+        )
+
   }
 
   remove(article: Article) {

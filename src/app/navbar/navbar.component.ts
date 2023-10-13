@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.article = {
+      id_user: NaN,
+      update_date: new Date(''),
       id: NaN,
       title: '',
       subtitle: '',

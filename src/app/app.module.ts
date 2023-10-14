@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     NavbarComponent,
     CategoryPipe,
     BuscarPipe,
-    UploadImageComponent
+    UploadImageComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

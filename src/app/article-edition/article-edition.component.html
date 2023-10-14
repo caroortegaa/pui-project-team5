@@ -1,7 +1,9 @@
-<h1 *ngIf="this.editmode; else createmode"> Edit article </h1>
+<app-navbar></app-navbar>
+
+<h3 *ngIf="this.editmode; else createmode"> Edit article </h3>
 
 <ng-template #createmode>
-    <h1> Create a new article </h1>
+    <h3> Create a new article </h3>
 </ng-template>
 
 <form #articleform="ngForm">

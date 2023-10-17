@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 
+<div class="container p-2">
 <h3 *ngIf="this.editmode; else createmode"> Edit article </h3>
 
 <ng-template #createmode>
@@ -15,7 +16,7 @@
     <a href="#" class="btn btn-primary">Clicketi kooo</a>
 </div> -->
 
-<div class="card-body col-sm-6" style="width: 18rem;">
+<div class="card-body col-sm-6">
 <label>
     Title
     <input  
@@ -112,14 +113,23 @@
     >
     </textarea>
 </label>
-<br>
+<br>  
+
 </div>
 
-<app-upload-image></app-upload-image>
+    <div class="uploadform">
+      <label for="fileUpload">Upload an image here:</label>
+      <br>
+
+      <input type="file" id="fileUpload" (change)="fileChangeEvent($event)" accept="image/jpeg, image/png" class="form-control-file">
+    </div>
+    <br>
+    <img [src]="cardImageBase64" alt="Preview" *ngIf="isImageSaved" class="preview-image" />
+    <br>
 
 <button 
 *ngIf="this.editmode; else createbutton"
-class="btn btn-outline-success"
+class="btn btn-primary"
 type="submit" 
 (click) = "update()"
 [disabled]="!articleform.form.valid">
@@ -129,7 +139,7 @@ Update article
 
 <ng-template #createbutton>
 <button 
-class="btn btn-outline-success"
+class="btn btn-primary"
 type="submit" 
 (click) = "create()"
 [disabled]="!articleform.form.valid">
@@ -147,3 +157,29 @@ Go back
 <br>
 
 </form>
+
+</div>
+
+<!-- <div class="preview">
+
+    <h3>Article preview</h3>
+
+    <br>
+
+    <p>Title:</p>
+    <h2>{{article.title}}</h2>
+
+    <p>Subtitle:</p>
+    <h5>{{article.subtitle}}</h5>
+
+    <p>Abstract:</p>
+    <h6>{{article.abstract}}</h6>
+
+    <p>Category:</p>
+    <h6>{{article.category}}</h6>
+
+    <p>Body:</p>
+    <p>{{article.body}}</p>
+
+</div>
+ -->

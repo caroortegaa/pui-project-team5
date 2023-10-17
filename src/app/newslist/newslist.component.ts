@@ -46,11 +46,7 @@ export class NewslistComponent implements OnInit {
     this.router.navigate(['/articlesdetail', eid]);
   }
 
-  /*getImageUrl(imageData: string, mediaType: string): string {
-    return `data:${mediaType};base64,${imageData}`;
-  }*/
-  getImageUrl(): string {
-    const { imageData, mediaType } = this.imageservice.getImageData();
+  getImageUrl(imageData: string, mediaType: string): string {
     return `data:${mediaType};base64,${imageData}`;
   }
 
@@ -62,4 +58,5 @@ export class NewslistComponent implements OnInit {
   }
 
   busqueda: string = '';
+
 }

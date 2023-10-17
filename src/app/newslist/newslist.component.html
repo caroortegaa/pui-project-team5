@@ -25,8 +25,7 @@
           <a class="nav-link" (click)="selectCategory('sports')">Sports</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="selectCategory('technology')"
-            >Technology</a
+          <a class="nav-link" (click)="selectCategory('technology')">Technology</a
           >
         </li>
       </ul>
@@ -67,13 +66,14 @@
       <h6 class="card-subtitle mb-2 text-muted" [innerHtml]= "article.subtitle | safeHtml"></h6>
       <!-- <img [src]="article.image_data" alt="Image_data?" /> -->
       <img
-        [src]="getImageUrl()"
+        [src]="getImageUrl(article.image_data, article.image_media_type)"
         alt=""
         class="img-fluid"
+        
       />
       <p class="card-text" [innerHtml]= "article.abstract | safeHtml"></p>
       <button class="btn btn-primary m-2" (click)="verNew(article.id)">Read</button>
-      <p class="card-text"><small class="text-muted fst-italic">Last updated 3 mins ago by: La llorona</small></p>
+      <p class="card-text"><small class="text-muted fst-italic">Last updated {{article.update_date}} ago by {{article.id_user}}</small></p>
       <div class="card-footer p-2">{{ article.category }}</div>
     </div>
       <!-- Add buttons for edit, remove in each article | create  in main page -->

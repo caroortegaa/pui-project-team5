@@ -2,3 +2,23 @@
     padding: 16 px;
     max-width: 50 px;
 }
+
+.form{
+    width:50%;
+    outline: 2px dashed blue;
+    display:flex;
+    justify-content: left;
+
+}
+
+.preview{
+    width:50%;
+    outline: 2px dashed green;
+    margin-bottom: 0;
+    display:flex;
+    justify-content: right;
+}
+
+h3{
+    justify-content: center;
+}

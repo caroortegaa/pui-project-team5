@@ -47,21 +47,12 @@ export class UploadImageComponent {
         this.article.image_data = e.target.result.substring(head, e.target.result.length);
 
         this.imageService.setImageData(
-          this.article.image_data = e.target.result.substring(head, e.target.result.length),
+          e.target.result.substring(head, e.target.result.length),
           fileInput.target.files[0].type
         );
 
       };
-        // image.onload = () => {
-          //   this.cardImageBase64 = e.target.result;
-          //   this.isImageSaved = true;
-          
-          
-          // this.article = {
-            
-          //   image_media_type: fileInput.target.files[0].type,
-          //   image_data: e.target.result
-          // };
+        
       };
       reader.readAsDataURL(fileInput.target.files[0]);
     }

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NewsService } from '../services/news.service';
 import { LoginService } from '../services/login.service';
 import { Location } from '@angular/common';
+//import { ImageServiceService } from '../image-service.service';
 
 @Component({
   selector: 'app-article-details',
@@ -19,24 +20,24 @@ export class ArticleDetailsComponent implements OnInit {
     public route: ActivatedRoute,
     public newsService: NewsService,
     public loginservice: LoginService,
-    private location: Location
+    private location: Location,
+    //private imageServicee: ImageServiceService
   ) {
  
   }
 
   ngOnInit() {
-    this.article = {id: NaN, id_user: NaN, update_date: new Date(""), title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:""}
+    this.article = {id: NaN, id_user: NaN, update_date: new Date(""), title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:"", thumbnail_image: '', thumbnail_media_type: ''}
     
     this.route.params.subscribe((params) => {
       this.eid = +params['id'];
       
       this.newsService.getArticle(this.eid).subscribe((article) => {
         this.new = article;
-        this.article = {id: article.id, id_user: article.id_user, update_date: article.update_date, title: article.title, subtitle: article.subtitle, abstract: article.abstract, category: article.category, body: article.body, image_data: article.image_data, image_media_type:article.image_media_type}
+        this.article = {id: article.id, id_user: article.id_user, update_date: article.update_date, title: article.title, subtitle: article.subtitle, abstract: article.abstract, category: article.category, body: article.body, image_data: article.image_data, image_media_type:article.image_media_type, thumbnail_image: article.thumbnail_image, thumbnail_media_type: article.thumbnail_media_type}
       });
     });
-    console.log('image_data:', this.new.image_data);
-    console.log('image_media_type:', this.new.image_media_type);
+  
   }
 
   goBack(): void {
@@ -44,6 +45,6 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   getImageUrl(imageData: string, mediaType: string): string {
-    return `data:${mediaType};base64,${imageData}`;
+   return `data:${mediaType};base64,${imageData}`;
   }
 }

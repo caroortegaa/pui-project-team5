@@ -3,11 +3,12 @@
   <h1 class="display-4" [innerHtml]= "article.title | safeHtml" ></h1>
   <p class="fs-6 fst-italic" [innerHtml]= "article.subtitle | safeHtml"> </p>
   <p class="fs-6 text-uppercase text-secondary" [innerHtml]= "article.category | safeHtml"></p>
-  <div class="mb-4">
+  <div class="article-thumbnail">
     <img
+      *ngIf="article.image_data && article.image_media_type"
       [src]="getImageUrl(article.image_data, article.image_media_type)"
-      alt=""
-      class="img-fluid"
+      alt="Thumbnail"
+      class="img-thumbnail"
     />
   </div>
   <p class="fs-6" [innerHtml]= "article.abstract | safeHtml"></p>

@@ -8,5 +8,7 @@ export interface Article {
     category: string;
     body: string;
     image_data: any;
-    image_media_type: any; //maybe change to image_media_type, image_data
+    image_media_type: any;
+    thumbnail_image: any; //we call thumbnail_image bc it's how it's called in the object
+    thumbnail_media_type: any;
 }

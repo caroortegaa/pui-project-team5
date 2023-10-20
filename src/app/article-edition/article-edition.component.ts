@@ -25,7 +25,7 @@ export class ArticleEditionComponent implements OnInit {
       this.param1 = queryParams.get("p1");
     })
 
-    this.article = {id: NaN, id_user: NaN, update_date: new Date(''), title: "", subtitle:"", abstract: "", category:"", body: "", image_data: '', image_media_type: '',};
+    this.article = {id: NaN, id_user: NaN, update_date: new Date(''), title: "", subtitle:"", abstract: "", category:"", body: "", image_data: '', image_media_type: '', thumbnail_image: '', thumbnail_media_type: ''};
 
     if (this.param1) {
 
@@ -34,7 +34,7 @@ export class ArticleEditionComponent implements OnInit {
 
       this.newsservice.getArticle(this.param1).subscribe({
         next: (article) => {
-          this.article = {id: article.id, id_user: article.id_user, update_date: article.update_date, title: article.title, subtitle: article.subtitle, abstract: article.abstract, category: article.category, body: article.body, image_data: article.image_data, image_media_type: article.image_media_type};
+          this.article = {id: article.id, id_user: article.id_user, update_date: article.update_date, title: article.title, subtitle: article.subtitle, abstract: article.abstract, category: article.category, body: article.body, image_data: article.image_data, image_media_type: article.image_media_type, thumbnail_image: article.thumbnail_image, thumbnail_media_type: article.thumbnail_media_type};
           console.log(this.article);
         },
       });
@@ -105,17 +105,10 @@ export class ArticleEditionComponent implements OnInit {
           fileInput.target.files[0].type
         );
 
+        console.log('imageData:', this.imageService.getImageData().imageData);
+        console.log('mediaType:', this.imageService.getImageData().mediaType);
+
       };
-        // image.onload = () => {
-          //   this.cardImageBase64 = e.target.result;
-          //   this.isImageSaved = true;
-          
-          
-          // this.article = {
-            
-          //   image_media_type: fileInput.target.files[0].type,
-          //   image_data: e.target.result
-          // };
       };
       reader.readAsDataURL(fileInput.target.files[0]);
     }

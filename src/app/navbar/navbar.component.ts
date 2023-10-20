@@ -30,6 +30,8 @@ export class NavbarComponent implements OnInit {
       body: '',
       image_data: '',
       image_media_type: '',
+      thumbnail_image:'',
+      thumbnail_media_type:''
     };
     this.newsservice.getArticles().subscribe((res) => {
       this.newsList = res;

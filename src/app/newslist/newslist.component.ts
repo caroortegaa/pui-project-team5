@@ -24,29 +24,32 @@ export class NewslistComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.article = {id: NaN, id_user: NaN, update_date: new Date(""), title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:""}
-      this.newsservice.getArticles().subscribe(res=>{
-        this.newsList = res;
-      }
-        )
-
+      this.article = {id: NaN, id_user: NaN, update_date: new Date(""), title: "", subtitle: "", abstract: "", category: "", body: "", image_data: "", image_media_type:"", thumbnail_image:"", thumbnail_media_type:""}
+        this.newsservice.getArticles().subscribe(res=>{
+          this.newsList = res;
+          //console.log(this.newsList)
+        }
+        )   
+      
   }
 
   remove(article: Article) {
     console.log(article);
     this.newsservice.deleteArticle(article).subscribe({
-      next: (article) => console.log('deleted'),
-      complete: () => delete this.newsList[article.id],
-    });
-    this.newsservice.getArticles();
-    return location.reload();
-  }
+       next: (article) => console.log('deleted'),
+       complete: () => delete this.newsList[article.id] ,
+     });
+     this.newsservice.getArticles();
+     return location.reload();
+   }
 
   verNew(eid: number) {
     this.router.navigate(['/articlesdetail', eid]);
   }
 
   getImageUrl(imageData: string, mediaType: string): string {
+    // this.article.image_data = this.imageservice.getImageData()?.imageData;
+    // this.article.image_media_type = this.imageservice.getImageData()?.mediaType;
     return `data:${mediaType};base64,${imageData}`;
   }
 

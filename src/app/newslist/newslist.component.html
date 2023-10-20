@@ -62,15 +62,19 @@
     >
     <div class="cardBody card text-center bg-light border-dark">
       <!--let article of newslist -->
-      <h5 class="card-title mt-2" [innerHtml]= "article.title | safeHtml"></h5>
-      <h6 class="card-subtitle mb-2 text-muted" [innerHtml]= "article.subtitle | safeHtml"></h6>
+      <div class="ratio ratio-16x9">
       <img class="card-img-top" src="{{'data:image/jpg;base64,' + article.thumbnail_image}}" alt="Card image cap">
-      
-      
-      <p class="card-text" [innerHtml]= "article.abstract | safeHtml"></p>
-      <button class="btn btn-primary m-2" (click)="verNew(article.id)">Read</button>
-      <p class="card-text"><small class="text-muted fst-italic">Last updated {{article.update_date}} ago by {{article.id_user}}</small></p>
-      <div class="card-footer p-2">{{ article.category }}</div>
+    </div>
+      <div class="card-body text-start">
+        <h5 class="card-title mb-3" [innerHtml]= "article.title | safeHtml"></h5>
+        <h6 class="card-subtitle mb-3 text-muted" [innerHtml]= "article.subtitle | safeHtml"></h6>
+        <p class="card-text" [innerHtml]= "article.abstract | safeHtml"></p>
+        <div class="d-grid">
+        <a class="btn btn-primary stretched-link mb-3" (click)="verNew(article.id)">Read</a>
+      </div>
+        <p class="card-text"><small class="text-muted fst-italic">Last updated {{article.update_date}} ago by {{article.id_user}}</small></p>
+    </div>
+      <div class="card-footer p-2 text-uppercase fw-light">{{ article.category }}</div>
     </div>
       <!-- Add buttons for edit, remove in each article | create  in main page -->
       <div *ngIf="this.loginservice.isLogged()">

@@ -1,16 +1,16 @@
 <app-navbar></app-navbar>
 
-<div class="container p-2">
+<div class="container-lg p-2">
 <h3 *ngIf="this.editmode; else createmode"> Edit article </h3>
 
 <ng-template #createmode>
-    <h3> Create a new article </h3>
+    <h3 class="my-3 text-center"> Create a new article </h3>
 </ng-template>
 
 <form #articleform="ngForm">
 
-<div class="card-body col-sm-6">
-<label>
+<div class="col-sm-6 mx-auto">
+<label class="mb-3 d-block">
     Title
     <input  
     type="text"
@@ -30,7 +30,7 @@
 
 <br>
 
-<label>
+<label class="mb-3 d-block">
     Subtitle 
     <input  
     type="text" 
@@ -50,7 +50,7 @@
 
 <br>
 
-<label>
+<label class="mb-3 d-block">
     Abstract 
     <input  
     type="text" 
@@ -69,7 +69,7 @@
 
 <br>
 
-<label>
+<label class="mb-3 d-block">
     Category 
     <select 
             class="form-control"
@@ -92,7 +92,7 @@
 
 <br>
 
-<label>
+<label class="d-block">
     Body
     <br> 
     <textarea  
@@ -108,17 +108,15 @@
 </label>
 <br>  
 
-</div>
-
-    <div class="uploadform">
-      <label for="fileUpload">Upload an image here:</label>
-      <br>
-
-      <input type="file" id="fileUpload" (change)="fileChangeEvent($event)" accept="image/jpeg, image/png" class="form-control-file">
-    </div>
+<div class="uploadform">
+    <label for="fileUpload" class="fs-6 mb-2">Upload an image here:</label>
     <br>
-    <img [src]="cardImageBase64" alt="Preview" *ngIf="isImageSaved" class="preview-image" />
-    <br>
+
+    <input type="file" id="fileUpload" (change)="fileChangeEvent($event)" accept="image/jpeg, image/png" class="form-control-file">
+  </div>
+  <br>
+  <img [src]="cardImageBase64" alt="Preview" *ngIf="isImageSaved" class="preview-image" />
+  <br>
 
 <button 
 *ngIf="this.editmode; else createbutton"
@@ -148,6 +146,10 @@ Go back
 </button>
 
 <br>
+
+</div>
+
+    
 
 </form>
 

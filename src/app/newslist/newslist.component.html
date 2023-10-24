@@ -1,9 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">EIT Newspaper</a>
-    
 
-    <div class="container-fluid flex-grow-0" id="navbarNav">
+    <div class="container-fluida flex-grow-0" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" (click)="selectCategory('national')">National</a>
@@ -33,12 +32,11 @@
     </form>
     <app-login class="mb-2"></app-login>
   </div>
-</nav>
 
+</nav>
 <div *ngIf="this.loginservice.isLogged()">
 <button class="btn btn-primary m-2" [routerLink]="['/editarticle/']" >Create new article</button>
 </div>
-
 <!-- antes de añadir navegación-->
 <div class="container">
   <div class="overflow-hidden">

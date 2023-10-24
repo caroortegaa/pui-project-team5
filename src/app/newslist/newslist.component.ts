@@ -40,6 +40,7 @@ export class NewslistComponent implements OnInit {
        complete: () => delete this.newsList[article.id] ,
      });
      this.newsservice.getArticles();
+     window.alert('You have successfully deleted the article!')
      return location.reload();
    }
 
